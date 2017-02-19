@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Scan the QR</title>
+        <style type="text/css">
+            /*.round-button{
+                  display:block;
+                  height: 60px;
+                  width: 60px;
+                  border-radius: 50%;
+                  border: 1px solid red;
+            }*/
+            .round-button {
+                width:25%;
+            }
+            .round-button-circle {
+                width: 100%;
+                height:0;
+                padding-bottom: 100%;
+                border-radius: 50%;
+                border:10px solid #cfdcec;
+                overflow:hidden;
+                
+                background: #4679BD; 
+                box-shadow: 0 0 3px gray;
+            }
+            .round-button-circle:hover {
+                background:#30588e;
+            }
+            .round-button a {
+                display:block;
+                float:left;
+                width:100%;
+                padding-top:50%;
+                padding-bottom:50%;
+                line-height:1em;
+                margin-top:-0.5em;
+                
+                text-align:center;
+                color:#e2eaf3;
+                font-family:Verdana;
+                font-size:1.2em;
+                font-weight:bold;
+                text-decoration:none;
+            }
+        </style>
+        
+        <script type="text/javascript">
+            function scan()
+            {
+                cordova.plugins.barcodeScanner.scan(
+                    function (result) {
+                        if(!result.cancelled)
+                        {
+                            if(result.format == "ALL_1D")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "CODABAR")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "CODE_128")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "CODE_39")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "CODE_93")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "DATA_MATRIX")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "EAN_13")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "EAN_8")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "ITF")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "MAXICODE")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "MSI")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "PDF_417")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "PLESSEY")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "QR_CODE")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "RSS_14")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "RSS_EXPANDED")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "UPC_A")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "UPC_E")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                            else if(result.format == "UPC_EAN_EXTENSION")
+                            {
+                                var value = result.text;
+                                alert(value);
+                            }
+                        }
+                    },
+                    function (error) {
+                        alert("Scanning failed: " + error);
+                    }
+               );
+                module.controller('ClipboardCtrl',function($scope,$cordovaClipboard)
+                {
+                    $cordovaClipboard
+                        //.copy('Text to copy')
+                        .copy(value)
+                        .then(function(){
+                            alert("Copied to Clipboard.");
+                        }, function() {
+                            //error
+                            alert("Error: Some problem occured, please try again.");
+                        });
+
+                    /*$cordovaClipboard
+                        .paste()
+                        .then(function(){
+                            //sucess
+                        }, function() {
+                            //error
+                            alert("Error: Some problem occured, please try again."); 
+
+                        });*/
+
+                });
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="app">
+            <!-- <a target="_blank" href="javascript:scan();" class="round-button"><font size="15">B</font></a> -->
+            <div class="round-button">
+                <div class="round-button-circle">
+                    <a href="javascript:scan();" class="round-button">Scan</a>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
