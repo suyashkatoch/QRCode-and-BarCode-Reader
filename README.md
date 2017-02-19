@@ -1,0 +1,1 @@
+# QRCode-and-BarCode-Reader
